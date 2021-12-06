@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net"
 	"net/http"
 	"time"
@@ -77,6 +78,7 @@ func (c *dohConn) Write(packet []byte) (n int, err error) {
 	if err != nil {
 		return 0, err
 	}
+	log.Printf("Got buf: %02x", c.rbuf.Bytes())
 	return len(packet), nil
 }
 
